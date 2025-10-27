@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>실습</title>
+
+    <style>
+        #form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: lightyellow;
+        }
+
+        #back {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .front {
+            display: inline-block;
+            width: 40px;
+        }
+
+        .box {
+            width: 200px;
+            height: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!--
+        1. RequestController에 이 파일을 화면처리하는 메서드 생성
+        2. 폼 전송을 받아 줄 수 있는 메서드 생성
+        3. 아이디가 abc123, 비밀번호가 xxx123이면 "로그인 성공" 이라고 사정
+        4. 성공시 quiz01_ok페이지로, 실패 시 quiz01_no 페이지로 이동
+        5. 값을 받는 방식은 본인 자유.
+    -->
+
+    <form action="quiz" method="post" id="form">
+        <div id="back">
+            <span class="front">ID : </span>
+            <input type="text" name="id" class="box"><br>
+            <span class="front">PW : </span>
+            <input type="password" name="pw" class="box"><br>
+            <input type="submit" value="로그인">
+        </div>
+    </form>
+
+</body>
+</html>
