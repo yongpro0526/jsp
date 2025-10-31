@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #quiz {
+            width: 400px;
+            background-color: #77DD77;
+            margin: 0 auto 30px;
+            padding: 0;
+            border-radius: 30px;
+        }
+        #quiz > p {
+            margin: 0 auto;
+            width: 350px;
+            background-color: white;
+            padding: 3px;
+            border: solid #777 1px;
+        }
+        #container {
+            border: solid #777 1px;
+            margin: 0 auto;
+            width: 300px;
+            background-color: beige;
+            border-radius: 10px;
+        }
+        #register {
+            margin: 0 auto;
+        }
+        #container > form > div {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <pre id="quiz">
+        <p>1.QuizController에 화면처리 메서드 생성.</p>
+        <p>2.폼 처리 메서드 생성</p>
+        <p>3.입력한 정보를 ok 화면에 출력</p>
+        <p>4.처리 방법 자유</p>
+	</pre>
+    <div id="container">
+        <div id="register">
+            <h2>회원가입</h2>
+        </div>
+        <form action="join" method="post">
+            <div>
+                아이디:<input type="text" name="id"><br>
+                비밀번호:<input type="password" name="pw"><br>
+                이메일:<input type="email" name="email"><br>
+                정보이용동의:
+                <input type="radio" name="agree" value="y">예
+                <input type="radio" name="agree" value="n">아니오
+            </div>
+            <div>
+                <input type="submit" value="회원가입">
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>

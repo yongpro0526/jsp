@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h3>타임리프 a링크</h3>
+
+    <th:block th:each="vo : ${list}">
+        <!-- <a href="ex03_ok?name=${vo.name}">[[${vo.name}]]</a><br> -->
+        <a th:href="@{ex03_ok(name=${vo.name}, age=${vo.age})}">[[${vo.name}]]</a><br>
+    </th:block>
+
+
+</body>
+</html>

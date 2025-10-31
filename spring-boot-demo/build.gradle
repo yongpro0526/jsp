@@ -27,6 +27,17 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // 타입리프 뷰
 
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
+    implementation("org.springframework.boot:spring-boot-starter-aop") // aop기능
+
+    // https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11
+    implementation("com.oracle.database.jdbc:ojdbc11:23.7.0.25.01") // 오라클 커넥터
+
+    // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3") // 마이바티스
+
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16' // sql
+
     // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
 //    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
     // https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api

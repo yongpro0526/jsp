@@ -10,7 +10,6 @@ public class ReqVO {
     private String pw;
     private String name;
     private ArrayList<String> inter;
-
     // 2. 생성자는 기본 생성자, 멤버변수 개수만한 생성자
     // Alt + Insert - 생성자 한번에 만들기
     public ReqVO() {}

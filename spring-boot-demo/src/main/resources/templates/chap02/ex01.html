@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 380px;
+            margin: 60px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .link-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .link-box a {
+            padding: 8px 14px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .link-box a:hover {
+            background: #0056b3;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label p {
+            margin: 0 0 5px;
+            font-weight: bold;
+            color: #444;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 5px;
+            transition: 0.2s;
+        }
+        input[type="submit"]:hover {
+            background: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>response ex01 파일 입니다</h3>
+        <div class="link-box">
+            <a href="ex02">모델전달자</a>
+            <a href="ex03">모델앤뷰객체</a>
+            <a href="ex04?id=a123">모델어노테이션</a>
+        </div>
+
+        <form action="ex05" method="post">
+            <label>
+                <p>id:</p>
+                <input type="text" name="id">
+            </label>
+            <label>
+                <p>pw:</p>
+                <input type="password" name="pw">
+            </label>
+            <input type="submit" value="확인">
+        </form>
+    </div>
+</body>
+</html>

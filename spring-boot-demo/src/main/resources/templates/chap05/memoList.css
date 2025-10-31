@@ -1,0 +1,212 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* 제목 스타일 */
+h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* 테이블 스타일 */
+.memo-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+/* 테이블 헤더 */
+.memo-table th {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 테이블 셀 */
+.memo-table td {
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 14px;
+}
+
+/* 짝수 행 배경색 */
+.memo-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* 마우스 호버 효과 */
+.memo-table tr:hover {
+    background-color: #f0f7ff;
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 링크 스타일 */
+.memo-link {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.memo-link:hover {
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+/* 비밀글 스타일 */
+.secret-memo {
+    color: #ff4444;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* 공개여부 배지 */
+.public-badge {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 60px;
+}
+
+.secret-badge {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 60px;
+}
+
+/* 컨테이너 */
+.memo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+/* 헤더 영역 */
+.memo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eaeaea;
+}
+
+/* 번호 셀 스타일 */
+.memo-number {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 15px;
+}
+
+/* 연락처 스타일 */
+.memo-phone {
+    color: #666;
+    font-family: 'Courier New', monospace;
+}
+
+/* 내용 스타일 */
+.memo-content {
+    text-align: left;
+    max-width: 300px;
+    word-break: break-word;
+    line-height: 1.5;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .memo-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .memo-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .memo-table {
+        font-size: 12px;
+    }
+
+    .memo-table th,
+    .memo-table td {
+        padding: 10px 8px;
+    }
+}
+
+/* 로딩 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.memo-table tr {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 아이콘 스타일 */
+.memo-icon {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+/* 빈 테이블 메시지 */
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 40px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    margin: 20px 0;
+}

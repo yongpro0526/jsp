@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" th:href="@{./memoList.css}">
+</head>
+<body>
+	<div class="memo-container">
+        <div class="memo-header">
+	        <h3>메모 목록</h3>
+        </div>
+    </div>
+	
+		<table class="memo-table">
+			<tr>
+				<td>번호</td>
+				<td>메모</td>
+				<td>연락처</td>
+				<td>공개여부</td>
+			</tr>
+						
+			<tr th:each="vo : ${list}">
+				<td class="memo-number">[[${vo.mno}]]</td>
+
+                <td class="memo-content">
+                    <span th:if="${vo.secret == 'y'}" class="secret-memo">비밀글입니다</span>
+                    <span th:unless="${vo.secret == 'y'}">[[${vo.memo}]]</span>
+                </td>
+				<td class="memo-phone">[[${vo.phone}]]</td>
+                <td>
+                    <span th:if="${vo.secret == 'y'}" class="secret-badge">비밀글</span>
+                    <span th:unless="${vo.secret == 'y'}" class="public-badge">공개글</span>
+                </td>
+			</tr>
+			
+	</table>
+	
+	<a href="memoWrite" class="memo-link">메모쓰기</a>
+</body>
+</html>
