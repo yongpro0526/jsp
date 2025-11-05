@@ -23,6 +23,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'         // 스프링 개발도구
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'  // 스프링 테스트
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'            // junit 태스트 도구
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' // 타입리프 뷰

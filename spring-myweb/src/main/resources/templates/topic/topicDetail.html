@@ -16,7 +16,9 @@
 
                             </div>
                         </div>
-                        <div class="page_title">게시글 연습 ><span class="page_subtitle">글 상세보기</span></div>
+                        <div class="page_title">게시글 연습 >
+                            <span class="page_subtitle">글 상세보기</span>
+                        </div>
                         <form name="#####" action="#####" method="post">
                             <div class="full_collum collum">
                                 <ul>
@@ -31,31 +33,30 @@
                                                     <tr>
                                                         <th>등록일</th>
                                                         <td>
-                                                            <span>2016-01-01</span>
+                                                            <span th:text="${#temporals.format(vo.topicRegDate, 'yyyy-MM-dd')}">1000-01-01</span>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>아이디</th>
-                                                        <td>admin</td>
+                                                        <td th:text="${vo.topicWriter}">abc123</td>
                                                     </tr>
 
                                                     <tr>
                                                         <th>제목</th>
-                                                        <td colspan="5">오늘은 해가뜨려나?</td>
+                                                        <td colspan="5" th:text="${vo.topicName}"></td>
                                                     </tr>
                                                     <tr>
                                                         <th>내용</th>
                                                         <td colspan="5">
-                                                            <div style="min-height: 300px;">오늘은 비가오려나?
-                                                            </div>
+                                                            <div th:text="${vo.topicContent}" style="min-height: 300px;"></div>
                                                         </td>
                                                     </tr>
 
 
                                                 </table>
                                                 <div class="btn_area">
-                                                    <input type="button" class="save" value="등록하러가기">
-                                                    <input type="button" class="delete" value="전체목록으로">
+                                                    <input type="button" class="save" value="등록하러가기" id="regist">
+                                                    <input type="button" class="delete" value="전체목록으로" id="list">
 
                                                 </div>
                                             </li>
@@ -74,4 +75,17 @@
         </div>
         <!-- wrap end -->
     </th:block>
+
+    <script>
+        let registBtn = document.getElementById("regist");
+        let listBtn = document.getElementById("list");
+
+        registBtn.addEventListener("click", function () {
+            window.location.href = "/topic/topicReg"
+        });
+
+        listBtn.addEventListener("click", function () {
+            window.location.href = "/topic/topicListAll";
+        });
+    </script>
 </html>

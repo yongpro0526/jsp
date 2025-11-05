@@ -9,8 +9,66 @@
                            TOPIC_NAME,
                            TOPIC_CONTENT)
         VALUES (#{topicWriter},
-                #{topicRegdate},
+                #{topicRegDate},
                 #{topicName},
                 #{topicContent})
     </insert>
+
+    <select id="getList" resultType="TopicVO">
+        SELECT *
+        FROM TOPIC
+        WHERE TOPIC_WRITER = #{topicWriter}
+        ORDER BY TOPIC_ID DESC
+        LIMIT #{criteria.pageStart}, #{criteria.amount}
+    </select>
+
+    <select id="getTotal" resultType="int" parameterType="string">
+        SELECT COUNT(*) AS total
+        FROM TOPIC
+        WHERE TOPIC_WRITER = #{topicWriter}
+    </select>
+
+    <select id="getListAll" resultType="TopicVO">
+        SELECT *
+        FROM TOPIC
+        WHERE 1 = 1
+        <if test="criteria.searchName != '' and criteria.searchName != null">
+            AND TOPIC_NAME LIKE CONCAT('%', #{criteria.searchName}, '%')
+        </if>
+        <if test="criteria.searchWriter != '' and criteria.searchWriter != null">
+            AND TOPIC_WRITER LIKE CONCAT('%', #{criteria.searchWriter}, '%')
+        </if>
+        ORDER BY TOPIC_ID DESC
+        LIMIT #{criteria.pageStart}, #{criteria.amount}
+    </select>
+
+    <select id="getTotalAll" resultType="int">
+        SELECT COUNT(*) AS total
+        FROM TOPIC
+        WHERE 1 = 1
+        <if test="criteria.searchName != '' and criteria.searchName != null">
+            AND TOPIC_NAME LIKE CONCAT('%', #{criteria.searchName}, '%')
+        </if>
+        <if test="criteria.searchWriter != '' and criteria.searchWriter != null">
+            AND TOPIC_WRITER LIKE CONCAT('%', #{criteria.searchWriter}, '%')
+        </if>
+    </select>
+
+    <select id="getModify" resultType="TopicVO" parameterType="long">
+        SELECT *
+        FROM TOPIC
+        WHERE TOPIC_ID = #{topicId}
+    </select>
+
+    <update id="topicUpdate" parameterType="TopicVO">
+        UPDATE TOPIC
+        SET TOPIC_NAME = #{topicName},
+            TOPIC_CONTENT = #{topicContent}
+        WHERE TOPIC_ID = #{topicId}
+    </update>
+
+    <delete id="topicDelete" parameterType="long">
+        DELETE FROM TOPIC
+        WHERE TOPIC_ID = #{topicId}
+    </delete>
 </mapper>

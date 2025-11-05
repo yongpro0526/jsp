@@ -19,86 +19,90 @@
 
                         <form name="###########" action="############" method="get" >
 
-                        <div class="full_collum collum">
-                            <ul>
-                                <li class="collum_tit">
-                                    <h2>내글 목록</h2>
+                            <div class="full_collum collum">
+                                <ul>
+                                    <li class="collum_tit">
+                                        <h2>내글 목록</h2>
 
-                                    <select class="">
-                                        <option value="10">10개 보기</option>
-                                        <option value="20">20개 보기</option>
-                                        <option value="40">40개 보기</option>
-                                        <option value="80">80개 보기</option>
-                                    </select>
-                                    <span class="showtoggle minus"></span>
-                                    <ul>
-                                        <li>
-                                            <table cellpadding="0" cellspacing="0" class="row_tb_7" width="100%;">
-                                                <tr>
-                                                    <th>순서</th>
-                                                    <th>아이디</th>
-                                                    <th>제목</th>
-                                                    <th>내용</th>
-                                                    <th>등록일</th>
-                                                    <th>수정/삭제</th>
-                                                </tr>
+                                        <select class="" id="handleAmount">
+                                            <option value="10" th:selected="${pageVO.amount == 10}">10개 보기</option>
+                                            <option value="20" th:selected="${pageVO.amount == 20}">20개 보기</option>
+                                            <option value="40" th:selected="${pageVO.amount == 40}">40개 보기</option>
+                                            <option value="80" th:selected="${pageVO.amount == 80}">80개 보기</option>
+                                        </select>
+                                        <span class="showtoggle minus"></span>
+                                        <ul>
+                                            <li>
+                                                <table cellpadding="0" cellspacing="0" class="row_tb_7" width="100%;">
+                                                    <tr>
+                                                        <th>순서</th>
+                                                        <th>아이디</th>
+                                                        <th>제목</th>
+                                                        <th>내용</th>
+                                                        <th>등록일</th>
+                                                        <th>수정/삭제</th>
+                                                    </tr>
 
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>admin</td>
-                                                    <td>오늘은 해가뜨려나?</td>
-                                                    <td>
-                                                        오늘은 비가오려나?
-                                                    </td>
-                                                    <td>2016-01-01</td>
-                                                    <td>
-                                                        <a href="#">수정</a>
-                                                        /
-                                                        <a href="#">삭제</a>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>admin</td>
-                                                    <td>세상에서 가장 가난한 임금은?</td>
-                                                    <td>
-                                                        최저임금
-                                                    </td>
-                                                    <td>2016-01-01</td>
-                                                    <td>
-                                                        <a href="#">수정</a>
-                                                        /
-                                                        <a href="#">삭제</a>
-                                                    </td>
-                                                </tr>
-
-                                            </table>
+                                                    <tr th:each="vo, status : ${topicList}">
+                                                        <td>[[${status.count}]]</td>
+                                                        <td>[[${vo.topicWriter}]]</td>
+                                                        <td>[[${vo.topicName}]]</td>
+                                                        <td>
+                                                            [[${vo.topicContent}]]
+                                                        </td>
+                                                        <td>[[${vo.topicRegDate}]]</td>
+                                                        <td>
+                                                            <a th:href="@{topicModify(topicId=${vo.topicId})}">수정</a>
+                                                            /
+                                                            <a th:href="@{/topic/topicDelete(topicId=${vo.topicId})}">삭제</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
 
 
-                                            <div class="page">
-                                                <ul>
-                                                    <li><a href="#"><i class="fa fa-angle-double-left"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li style="margin-right:5px;"><a href="#"><i class="fa fa-angle-left"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li class="on"><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li style="margin-left:5px;"><a href="#"><i class="fa fa-angle-right"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-double-right"
-                                                                aria-hidden="true"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                                <div class="page">
+                                                    <ul>
+                                                        <li>
+                                                            <a th:href="@{productList(page=1, amount=${pageVO.amount})}">
+                                                                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                                            </a>
+                                                        </li>
 
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                                                        <th:block th:if="${pageVO.prev}">
+                                                            <li style="margin-right:5px;">
+                                                                <a th:href="@{topicListMe(page=${pageVO.start - 1}, amount=${pageVO.amount})}">
+                                                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                                                </a>
+                                                            </li>
+                                                        </th:block>
+
+                                                        <th:block th:each="page : ${pageVO.pageList}">
+                                                            <li th:class="${pageVO.page == page ? 'on' : ' '}">
+                                                                <a th:href="@{topicListMe(page=${page}, amount=${pageVO.amount})}">[[${page}]]</a>
+                                                            </li>
+                                                        </th:block>
+
+                                                        <th:block th:if="${pageVO.next}">
+                                                            <li style="margin-left:5px;">
+                                                                <a th:href="@{topicListMe(page=${pageVO.end + 1}, amount=${pageVO.amount})}">
+                                                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                                </a>
+                                                            </li>
+                                                        </th:block>
+
+                                                        <li>
+                                                            <a th:href="@{topicListMe(page=${pageVO.realEnd}, amount=${pageVO.amount})}">
+                                                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </form>
 
                     </div>
@@ -171,4 +175,17 @@
         </div><!-- end wrap -->
 
     </th:block>
+
+    <script th:inline="javascript">
+        let msg = JSON.parse(`[[${msg}]]`);
+        if (msg !== null) {
+            alert(msg);
+        }
+
+        let handleAmount = document.getElementById("handleAmount");
+        handleAmount.addEventListener("change", function () {
+            location.href='topicListMe?page=1&amount=' + event.target.value;
+        });
+    </script>
+
 </html>

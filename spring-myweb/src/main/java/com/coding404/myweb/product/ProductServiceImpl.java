@@ -1,8 +1,11 @@
 package com.coding404.myweb.product;
 
 import com.coding404.myweb.command.ProductVO;
+import com.coding404.myweb.util.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("productService")
 public class ProductServiceImpl implements ProductService {
@@ -15,4 +18,28 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.prodRegist(productVO);
     }
 
+    @Override
+    public List<ProductVO> getList(String prodWriter, Criteria criteria) {
+        return productMapper.getList(prodWriter, criteria);
+    }
+
+    @Override
+    public int getTotal(String prodWriter, Criteria criteria) {
+        return productMapper.getTotal(prodWriter, criteria);
+    }
+
+    @Override
+    public ProductVO getDetail(long prodId) {
+        return productMapper.getDetail(prodId);
+    }
+
+    @Override
+    public int prodUpdate(ProductVO productVO) {
+        return productMapper.prodUpdate(productVO);
+    }
+
+    @Override
+    public int prodDelete(long prodId) {
+        return productMapper.prodDelete(prodId);
+    }
 }
