@@ -7,6 +7,7 @@
 
     <insert id="prodRegist" parameterType="ProductVO">
         INSERT INTO PRODUCT(PROD_ENDDATE,
+                            PROD_CATEGORY,
                             PROD_WRITER,
                             PROD_NAME,
                             PROD_PRICE,
@@ -16,6 +17,7 @@
                             PROD_CONTENT,
                             PROD_COMMENT)
         VALUES(#{prodEnddate},
+               #{prodCategory},
                #{prodWriter},
                #{prodName},
                #{prodPrice},
@@ -110,5 +112,18 @@
         DELETE FROM PRODUCT
         WHERE PROD_ID = #{prodId}
     </delete>
+
+    <!-- 1단 카테고리 -->
+    <select id="getCategory" resultType="CategoryVO">
+        SELECT * FROM PRODUCT_CATEGORY WHERE CATEGORY_LV = 1
+    </select>
+    <!-- 2~3단 카테고리 -->
+    <select id="getCategoryChild" resultType="CategoryVO">
+        SELECT *
+        FROM PRODUCT_CATEGORY
+        WHERE GROUP_ID = #{groupId}
+          AND CATEGORY_PARENT_LV = #{categoryLv}
+          AND CATEGORY_DETAIL_PARENT_LV = #{categoryDetailLv}
+    </select>
 
 </mapper>

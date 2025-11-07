@@ -1,5 +1,6 @@
 package com.coding404.myweb.product;
 
+import com.coding404.myweb.command.CategoryVO;
 import com.coding404.myweb.command.ProductVO;
 import com.coding404.myweb.util.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public int prodDelete(long prodId) {
         return productMapper.prodDelete(prodId);
+    }
+
+    @Override
+    public List<CategoryVO> getCategory() {
+        return productMapper.getCategory();
+    }
+
+    @Override
+    public List<CategoryVO> getCategoryChild(CategoryVO categoryVO) {
+        return productMapper.getCategoryChild(categoryVO);
     }
 }
